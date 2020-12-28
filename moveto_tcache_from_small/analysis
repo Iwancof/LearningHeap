@@ -1,0 +1,40 @@
+Add to tcache 0x55c3ef4402a0 at 0
+Add to tcache 0x55c3ef4402d0 at 1
+Add to tcache 0x55c3ef440300 at 2
+Add to tcache 0x55c3ef440330 at 3
+Add to tcache 0x55c3ef440360 at 4
+Add to tcache 0x55c3ef440390 at 5
+Add to tcache 0x55c3ef4403c0 at 6
+Add to smallbin 0x55c3ef4403f0 at 0
+Add to smallbin 0x55c3ef440420 at 1
+Add to smallbin 0x55c3ef440450 at 2
+Add to smallbin 0x55c3ef440480 at 3
+Add to smallbin 0x55c3ef4404b0 at 4
+Get from tcache 0x55c3ef4403c0 at 0
+Get from tcache 0x55c3ef440390 at 1
+Get from tcache 0x55c3ef440360 at 2
+Get from tcache 0x55c3ef440330 at 3
+Get from tcache 0x55c3ef440300 at 4
+Get from tcache 0x55c3ef4402d0 at 5
+Get from tcache 0x55c3ef4402a0 at 6
+
+Get testing 0x55c3ef4404b0 at 0
+// get from smallbin. and other bins moves to tcache. 
+
+smallbin was 
+4b0 -- 480 -- 450 -- 420 -- 3f0
+
+so, malloc returns 4b0 first.
+and, add to tcache in the order of smallbin.
+480 -- 450 -- 420 -- 3f0
+
+tcache is ...
+(tcache_entry) -- 3f0 -- 420 -- 450 -- 480
+
+Get testing 0x55c3ef4403f0 at 1 
+// first tcache
+
+Get testing 0x55c3ef440420 at 2
+Get testing 0x55c3ef440450 at 3
+Get testing 0x55c3ef440480 at 4
+
